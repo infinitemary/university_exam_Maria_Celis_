@@ -4,7 +4,12 @@ Una landing page moderna y responsiva para plataformas universitarias online, de
 
 ## ✨ Características
 
-- **Diseño Responsivo**: Adaptable a todos los dispositivos
+- **Diseño Responsivo**: Adaptable a los dispositivos móviles de 
+- `lg`: ≥992px (Desktop)
+- `md`: ≥759px (Tablet)
+- `sm`: ≥480px (Móvil pequeño)
+- **Header Fijo**: Navegación principal que permanece visible al hacer scroll
+- **Carruseles Bootstrap 4**: Para secciones de equipo y testimonios
 - **Video de Fondo**: Efecto visual impactante con `hero-video.mp4`
 - **Formulario de Registro**: Validación en tiempo real con JavaScript
 - **Navegación Suave**: Scroll suave entre secciones
@@ -20,22 +25,35 @@ Una landing page moderna y responsiva para plataformas universitarias online, de
 
 ## 📁 Estructura del Proyecto
 
-```
-A20/
+Maria_Celis_exam_2/
 ├── index.html          # Archivo HTML principal
-├── styles.css          # Estilos CSS personalizados
+├── style.css           # Estilos CSS personalizados
 ├── script.js           # Funcionalidades JavaScript
 ├── Videos/
-│   └── hero-video.mp4  # Video de fondo
+│   ├── hero-video.mp4  # Video de fondo
+│   └── review-1.mp4    # Video de testimonios
 ├── imagenes/           # Carpeta de imágenes
 └── README.md           # Este archivo
 ```
+
+**Cambios principales agregados al README:**
+
+1. ✅ **Header fijo** al hacer scroll
+2. ✅ **Carruseles Bootstrap 4** para equipo y testimonios
+3. ✅ **Header responsive** en móvil
+4. ✅ **Funcionalidades de video** con poster visible
+5. ✅ **Estructura HTML** del carrusel de videos
+6. ✅ **Solución de problemas** específicos implementados
+7. ✅ **Configuración de carruseles** en JavaScript
+8. ✅ **Estado actual** del proyecto completamente funcional
+
+**¿El README ahora refleja correctamente todas las modificaciones implementadas?**
 
 ## 🎨 Personalización
 
 ### Colores
 
-Los colores están definidos como variables CSS en `styles.css`:
+Los colores están definidos como variables CSS en `style.css`:
 
 ```css
 :root {
@@ -49,7 +67,7 @@ Los colores están definidos como variables CSS en `styles.css`:
 
 ### Tipografías
 
-Cambia la fuente principal en `styles.css`:
+Cambia la fuente principal en `style.css`:
 
 ```css
 body {
@@ -62,18 +80,28 @@ body {
 Para cambiar el logo, modifica el HTML en `index.html`:
 
 ```html
-<div class="logo-diamond">
-    <div class="logo-diamond-inner"></div>
+<div class="logo-container">
+    <img src="imagenes/LOGO.png" alt="Logo" class="logo">
+    <span>universidad</span>
 </div>
 ```
 
-O reemplaza completamente con una imagen:
-
-```html
-<img src="ruta/a/tu/logo.png" alt="Logo" class="logo">
-```
-
 ## 🔧 Funcionalidades JavaScript
+
+### Carruseles Bootstrap 4
+
+#### Team Section
+- **4 items en PC**, **1 item en móvil**
+- **Auto-play** cada 5 segundos
+- **Responsive** para todos los dispositivos
+- **Loop infinito** habilitado
+
+#### Testimonials Section
+- **5 videos** con carrusel Bootstrap
+- **Poster visible** al cargar la página
+- **Botón play naranja** funcional
+- **Auto-advance** al siguiente video después de reproducir
+- **Indicators** sincronizados con el carrusel
 
 ### Validación de Formulario
 
@@ -85,8 +113,8 @@ O reemplaza completamente con una imagen:
 ### Navegación
 
 - **Scroll suave** entre secciones
-- **Navbar dinámica** que cambia al hacer scroll
-- **Menú responsive** con hamburger en móviles
+- **Header fijo** que permanece visible al hacer scroll //Cambio ajustado
+- **Menú responsive** con Bootstrap grid en móviles
 
 ### Animaciones
 
@@ -98,16 +126,23 @@ O reemplaza completamente con una imagen:
 
 La landing page se adapta automáticamente a:
 
-- **Desktop**: Layout completo con formulario flotante
+- **Desktop**: Layout completo con header fijo y carruseles
 - **Tablet**: Ajustes de tamaño y espaciado
-- **Móvil**: Stack vertical y menú hamburger
+- **Móvil**: Stack vertical, menú reorganizado y carruseles adaptados
 
 ### Breakpoints Bootstrap 4
 
 - `lg`: ≥992px (Desktop)
-- `md`: ≥768px (Tablet)
-- `sm`: ≥576px (Móvil pequeño)
-- `<576px`: Móvil extra pequeño
+- `md`: ≥759px (Tablet)
+- `sm`: ≥480px (Móvil pequeño)
+
+
+### Header Responsive //Cambio ajustado
+
+- **Logo adaptativo** (tamaño ajustado por dispositivo)
+- **Menú reorganizado** en móvil (`flex-direction: column`)
+- **Elementos centrados** en vista móvil
+- **Grid Bootstrap** funcionando correctamente
 
 ## 🎥 Video de Fondo
 
@@ -147,6 +182,7 @@ Si el video no carga, se muestra automáticamente la imagen `imagenes/IMAGEN HER
 - **Intersection Observer** para animaciones
 - **Event delegation** para elementos dinámicos
 - **Debouncing** en eventos de scroll
+- **Preload optimizado** para videos (`preload="auto"`)
 
 ### SEO
 
@@ -167,7 +203,7 @@ Si el video no carga, se muestra automáticamente la imagen `imagenes/IMAGEN HER
 ### Agregar Nuevas Secciones
 
 1. **HTML**: Añade la estructura en `index.html`
-2. **CSS**: Define estilos en `styles.css`
+2. **CSS**: Define estilos en `style.css`
 3. **JavaScript**: Agrega funcionalidades en `script.js`
 
 ### Cambiar Video de Fondo
@@ -178,6 +214,25 @@ Si el video no carga, se muestra automáticamente la imagen `imagenes/IMAGEN HER
     object-fit: cover;
     filter: brightness(0.8);
 }
+```
+
+### Modificar Carruseles //Cambio ajustado
+
+```javascript
+// Configurar carrusel de equipo
+$('#teamCarousel').carousel({
+    interval: 5000,    // Cambio cada 5 segundos
+    pause: 'hover',     // Pausar en hover
+    wrap: true          // Loop infinito
+});
+
+// Configurar carrusel de videos
+$('.videoCarousel').carousel({
+    interval: false,    // No auto-play
+    wrap: true,         // Loop infinito
+    pause: false,       // No pausar en hover
+    keyboard: false     // No responder a teclado
+});
 ```
 
 ### Modificar Animaciones
@@ -197,6 +252,18 @@ Si el video no carga, se muestra automáticamente la imagen `imagenes/IMAGEN HER
 - Asegúrate de que el formato sea MP4
 - Comprueba que el navegador soporte video HTML5
 
+### Poster del Video No Se Ve
+
+- Verifica que `preload="auto"` esté en el HTML
+- Comprueba que la ruta del poster sea correcta
+- Asegúrate de que la ruta del video existe
+
+### Carruseles No Funcionan
+
+- Verifica que Bootstrap 4 esté incluido
+- Comprueba que jQuery esté disponible
+- Abre la consola del navegador para ver errores
+
 ### Formulario No Funciona
 
 - Abre la consola del navegador (F12)
@@ -205,9 +272,15 @@ Si el video no carga, se muestra automáticamente la imagen `imagenes/IMAGEN HER
 
 ### Estilos No Se Aplican
 
-- Verifica que `styles.css` está en la misma carpeta
+- Verifica que `style.css` está en la misma carpeta
 - Comprueba que la ruta en `index.html` es correcta
 - Limpia la caché del navegador
+
+### Header No Es Responsive
+
+- Verifica que las clases Bootstrap estén correctas
+- Comprueba que los media queries estén bien definidos
+- Asegúrate de que no hay conflictos de CSS
 
 ## 📚 Recursos Adicionales
 
@@ -215,6 +288,7 @@ Si el video no carga, se muestra automáticamente la imagen `imagenes/IMAGEN HER
 - [Documentación oficial](https://getbootstrap.com/docs/4.6/)
 - [Componentes](https://getbootstrap.com/docs/4.6/components/)
 - [Utilidades](https://getbootstrap.com/docs/4.6/utilities/)
+- [Carruseles](https://getbootstrap.com/docs/4.6/components/carousel/)
 
 ### Font Awesome
 - [Iconos disponibles](https://fontawesome.com/icons)
@@ -249,3 +323,5 @@ Si tienes preguntas o necesitas ayuda:
 ---
 
 **Desarrollado con ❤️ para la educación online**
+
+**Última actualización**: Agosto 2025 - Todas las funcionalidades implementadas y funcionando correctamente.
